@@ -1,0 +1,35 @@
+{
+  "canisters": {
+    "wizard_backend": {
+      "main": "src/wizard_backend/main.mo",
+      "type": "motoko"
+    },
+    "wizard_frontend": {
+      "dependencies": [
+        "wizard_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/wizard_frontend/src/index.html"
+      },
+      "source": [
+        "src/wizard_frontend/assets",
+        "dist/wizard_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "dfx": "0.11.2",
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:8000",
+      "type": "ephemeral"
+    }
+  },
+  "version": 1
+}

@@ -48,10 +48,15 @@ button[type="submit"] {
 .landing-page{
     /* The image used */
     background-image: url(./landing-page-1.png);
+    /*preserves the crisp edges of the pixel art*/
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 
+    background-color: #222;
     /* Full height */
     height: 100vh;
-
+    position: relative;
     /* Center and scale the image nicely */
     background-position: center;
     background-repeat: no-repeat;
@@ -105,20 +110,20 @@ button[type="submit"] {
     padding: 10em;
     padding-top: 15em;
 }
-
+.fade-appear,
 .fade-enter {
-    opacity: 0;
-    z-index: 1;
+opacity: 0;
+z-index: 1;
 }
-
+.fade-appear-active,
 .fade-enter.fade-enter-active {
-    opacity: 1;
-    transition: opacity 500ms;
+opacity: 1;
+transition: opacity 450ms linear 250ms;
 }
 .fade-exit {
-    opacity: 1;
+opacity: 1;
 }
 .fade-exit.fade-exit-active {
-    opacity: 0;
-    transition: opacity 500ms;
+opacity: 0;
+transition: opacity 150ms linear;
 }

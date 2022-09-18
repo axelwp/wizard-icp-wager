@@ -16,12 +16,14 @@ export default function App () {
     return (
     <TransitionGroup>
           <CSSTransition
+          in={true}
+          appear={true}
           timeout={500}
           classNames='fade'
           key={location.key}
-          >
+          unmountOnExit>
             <Routes location={location}>
-              <Route path="/" element={<Landing/>} />
+              <Route exact path="/" element={<Landing/>} />
               <Route path="game" element={<Game />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

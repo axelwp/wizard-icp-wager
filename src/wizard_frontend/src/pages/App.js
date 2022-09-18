@@ -16,7 +16,7 @@ export default function App () {
     return (
     <TransitionGroup>
           <CSSTransition
-          timeout={250}
+          timeout={500}
           classNames='fade'
           key={location.key}
           >

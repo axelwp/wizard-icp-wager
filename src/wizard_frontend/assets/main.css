@@ -113,5 +113,12 @@ button[type="submit"] {
 
 .fade-enter.fade-enter-active {
     opacity: 1;
-    transition: opacity 250ms ease-in;
+    transition: opacity 500ms;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
 }

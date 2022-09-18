@@ -1,6 +1,13 @@
+html {
+    height: 100%;
+    margin: 0;
+}
 body {
-    font-family: sans-serif;
+    height: 100%;
+    margin: 0;
+    font-family: "Courier New", monospace;
     font-size: 1.5rem;
+    background-color: #222;
 }
 
 img {
@@ -36,6 +43,19 @@ button[type="submit"] {
 
 #greeting:empty {
     display: none;
+}
+
+.landing-page{
+    /* The image used */
+    background-image: url(./landing-page-1.png);
+
+    /* Full height */
+    height: 100vh;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .deselected {
@@ -86,11 +106,12 @@ button[type="submit"] {
     padding-top: 15em;
 }
 
-.transition-fade {
-    transition: 0.4s;
-    opacity: 1;
-  }
-  
-  html.is-animating .transition-fade {
+.fade-enter {
     opacity: 0;
-  }
+    z-index: 1;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 250ms ease-in;
+}

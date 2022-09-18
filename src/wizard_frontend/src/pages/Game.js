@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Outlet, Link } from "react-router-dom";
 import { wizard_backend } from "../../../declarations/wizard_backend";
 import {topLeftClicked, topCenterClicked, topRightClicked, bottomLeftClicked, bottomCenterClicked, bottomRightClicked} from "../functions/priceOptions";
 
@@ -146,25 +147,28 @@ const Game = () => {
   }
 
   return (
-    <div className="gameArea">
-        <div className="wagerAmountArea">
-          <div className="topRow">
-            <div id="topLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.1</div>
-            <div id="topCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.25</div>
-            <div id="topRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.5</div>
-          </div>
-          <div className="bottomRow">
-            <div id="bottomLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>1</div>
-            <div id="bottomCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>2</div>
-            <div id="bottomRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>5</div>
-          </div>
+    <div>
+        <Link to="/">Landing</Link>
+        <div className="gameArea">
+            <div className="wagerAmountArea">
+                <div className="topRow">
+                    <div id="topLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.1</div>
+                    <div id="topCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.25</div>
+                    <div id="topRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.5</div>
+                </div>
+                <div className="bottomRow">
+                    <div id="bottomLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>1</div>
+                    <div id="bottomCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>2</div>
+                    <div id="bottomRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>5</div>
+                </div>
+                </div>
+            <div className="choiceArea">
+                <button type="submit" value="Rock" onClick={ rockClicked }>Rock</button>
+                <button type="submit" value="Paper" onClick={ paperClicked }>Paper</button>
+                <button type="submit" value="Scissors" onClick={ scissorsClicked }>Scissors</button>
+            </div>
+            <div className="outcomeArea"> {outcome} </div>
         </div>
-        <div className="choiceArea">
-          <button type="submit" value="Rock" onClick={ rockClicked }>Rock</button>
-          <button type="submit" value="Paper" onClick={ paperClicked }>Paper</button>
-          <button type="submit" value="Scissors" onClick={ scissorsClicked }>Scissors</button>
-        </div>
-        <div className="outcomeArea"> {outcome} </div>
     </div>
   );
 };

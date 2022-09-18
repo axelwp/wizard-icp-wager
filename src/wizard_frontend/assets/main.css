@@ -21,9 +21,11 @@ form {
 }
 
 button[type="submit"] {
-    padding: 5px 20px;
-    margin: 10px auto;
-    float: right;
+    padding: 10px 20px;
+    margin: 1em;
+    width: 13em;
+    height: 8rem;
+    font-size: 40px;
 }
 
 #greeting {
@@ -34,4 +36,63 @@ button[type="submit"] {
 
 #greeting:empty {
     display: none;
+}
+
+.deselected {
+    background-color: #fff7e6;
+    width: 10rem;
+    height: 3rem;  
+    text-align: center;
+    display: inline-block;
+    margin: 1rem;
+}
+.selected {
+    background-color: #b37a00;
+    width: 10rem;
+    height: 3rem;  
+    text-align: center;
+    display: inline-block;
+    margin: 1rem;
+}
+.outcomeArea {
+    margin-left: auto;
+    margin-right: auto;
+    width: 8em;
+    text-align: center;
+    padding: 2em;
+    top: 5%;
+}
+.wagerAmountArea {
+    align-items: center;
+    justify-content: center;
+    height: 8em;
+    position: absolute;
+    left: 50%;
+    top:20%;
+    transform: translateX(-50%);
+}
+
+.choiceArea {
+    height: 10em;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+.gameArea {
+    align-items: center;
+    justify-content: center;
+    height: 20em;
+    padding: 10em;
+    padding-top: 15em;
+}
+
+/*classes for vue animations*/
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }

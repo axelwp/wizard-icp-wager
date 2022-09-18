@@ -17,14 +17,3 @@ root.render(
     <App />
   </Router>
 );
-/*
-render(
-  <BrowserRouter>
-    <Routes>
-        <Route index element={<Landing />} />
-        <Route path="game" element={<Game />}/>
-        <Route path="*" element={<NotFound />}/>
-    </Routes>
-  </BrowserRouter>,
-  document.getElementById("root")
-);*/

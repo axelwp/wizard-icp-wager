@@ -45,15 +45,43 @@ button[type="submit"] {
     display: none;
 }
 
-.landing-page{
+#connect-wallet-container {
+    position: absolute;
+    height: 20rem;
+    width: 12rem;
+    margin-left: auto;
+    right:2rem;
+    top: 2rem;
+    background-color: #222;
+    border-radius: 1rem;
+    display: none;
+}
+#connect-wallet-button {
+    position: absolute;
+    background-color: orange;
+    width: 8rem;
+    margin-left: auto;
+    right: 15rem;
+    top: 37rem;
+    border-radius: 2px;
+}
+#plug-connect-button {
+    background-image: url(./plug-logo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 3rem;
+    height: 3rem;
+    margin: auto;
+}
+#landing-page{
     /* The image used */
-    background-image: url(./landing-page-1.png);
+    background-image: url(./landing-page-2.gif);
     /*preserves the crisp edges of the pixel art*/
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
     image-rendering: crisp-edges;
 
-    background-color: #222;
     /* Full height */
     height: 100vh;
     position: relative;
@@ -61,6 +89,9 @@ button[type="submit"] {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+#game-page{
+    display: none;
 }
 
 .deselected {
@@ -126,4 +157,26 @@ opacity: 1;
 .fade-exit.fade-exit-active {
 opacity: 0;
 transition: opacity 150ms linear;
+}
+
+.fade-in-logo-landing { 
+    position: absolute;
+    left: 35vw;
+    top: 0vh;
+    opacity: 95%;
+    margin-left: auto;
+    width:100%;
+    animation: fadeIn 5s; 
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.fade-out-landing { 
+    animation: fadeOut 2.5s; 
+}
+@keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
 }

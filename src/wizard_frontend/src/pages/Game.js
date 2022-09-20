@@ -147,8 +147,7 @@ const Game = () => {
   }
 
   return (
-    <div>
-        <Link to="/">Landing</Link>
+    <div id="game-page">
         <div className="gameArea">
             <div className="wagerAmountArea">
                 <div className="topRow">

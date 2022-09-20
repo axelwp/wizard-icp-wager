@@ -13,7 +13,5 @@ import NotFound from "./pages/NotFound";
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-  <Router>
     <App />
-  </Router>
 );

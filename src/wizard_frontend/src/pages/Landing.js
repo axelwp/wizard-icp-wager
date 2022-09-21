@@ -29,13 +29,13 @@ function closeLanding() {
     
     page.className = "fade-out-landing"
     setTimeout(function() {
-        game.style.animation = "fadeIn 2.5s"
         page.style.display = "none"
+        game.style.animation = "fadeIn 2.5s"
+        setTimeout(function() {
+            game.style.display = "block"
+            console.log("closed the landing")
+        }, 2500);
     }, 2500);
-    setTimeout(function() {
-        game.style.display = "block"
-    }, 2500);
-    console.log("closed the landing")
 }
 
 const WalletModal = () => {

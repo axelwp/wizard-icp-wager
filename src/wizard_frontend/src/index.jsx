@@ -1,5 +1,7 @@
 import * as React from "react";
 import {createRoot} from "react-dom/client";
+import { Web3ReactProvider } from '@web3-react/core'
+import { Web3Provider } from 'web3'
 import { BrowserRouter as Router,
   Routes,
   Route,
@@ -10,8 +12,13 @@ import { BrowserRouter as Router,
 import App from "./pages/App";
 import NotFound from "./pages/NotFound";
 
+function getLibrary(provider) {
+  return new Web3Provider(provider);
+}
 
 const root = createRoot(document.getElementById('root'));
 root.render(
-    <App />
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <App />
+    </Web3ReactProvider>
 );

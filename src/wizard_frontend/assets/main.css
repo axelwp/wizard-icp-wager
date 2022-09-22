@@ -74,6 +74,24 @@ button[type="submit"] {
     height: 3rem;
     margin: auto;
 }
+#stoic-connect-button {
+    background-image: url(./stoic.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 3rem;
+    height: 3rem;
+    margin: auto;
+}
+#infinity-connect-button {
+    background-image: url(./infinityswap.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 3rem;
+    height: 3rem;
+    margin: auto;
+}
 #landing-page{
     /* The image used */
     background-image: url(./landing-page-2.gif);

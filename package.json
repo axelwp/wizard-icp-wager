@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@dfinity/agent": "0.13.3",
-    "@dfinity/candid": "0.13.3",
+    "@dfinity/candid": "^0.13.3",
     "@dfinity/principal": "0.13.3",
     "assert": "2.0.0",
     "buffer": "6.0.3",
@@ -41,10 +41,13 @@
     "last 2 edge version"
   ],
   "dependencies": {
+    "@web3-react/core": "^6.1.9",
+    "ic-stoic-identity": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.4.0",
     "react-transition-group": "^4.4.5",
-    "ts-loader": "^9.3.1"
+    "ts-loader": "^9.3.1",
+    "web3": "^1.8.0"
   }
 }

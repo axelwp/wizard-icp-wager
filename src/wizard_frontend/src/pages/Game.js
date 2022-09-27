@@ -14,6 +14,37 @@ var gameSong = new Howl ({
     }
 })
 
+var scissorsSong = new Howl ({
+  src: ['audio/Chosing_Scissors.wav'],
+  autoplay: true,
+  loop: true,
+  volume: 0,
+  onend: function() {
+      console.log('Finished!');
+    }
+})
+
+var rockSong = new Howl ({
+  src: ['audio/Choosing_Rock.wav'],
+  autoplay: true,
+  loop: true,
+  volume: 0,
+  onend: function() {
+      console.log('Finished!');
+    }
+})
+
+var paperSong = new Howl ({
+  src: ['audio/Choosing_Paper.wav'],
+  autoplay: true,
+  loop: true,
+  volume: 0,
+  onend: function() {
+      console.log('Finished!');
+    }
+})
+
+
 const Game = () => {
   const [name, setName] = React.useState('');
   const [message, setMessage] = React.useState('');
@@ -108,6 +139,10 @@ const Game = () => {
 
 
   async function rockClicked() {
+    rockSong.fade(0, 1, 1)
+    scissorsSong.fade(1, 0, 1)
+    paperSong.fade(1, 0, 1)
+    gameSong.fade(1, 0, 1)
     const choice = await wizard_backend.get_choice();
 
       if(choice == '0'){
@@ -125,6 +160,10 @@ const Game = () => {
   }
 
   async function paperClicked() {
+    paperSong.fade(0, 1, 1)
+    gameSong.fade(1, 0, 1)
+    rockSong.fade(1, 0, 1)
+    scissorsSong.fade(1, 0, 1)
     const choice = await wizard_backend.get_choice();
 
       if(choice == '0'){
@@ -142,8 +181,11 @@ const Game = () => {
   }
 
   async function scissorsClicked() {
+    scissorsSong.fade(0, 1, 1)
+    gameSong.fade(1, 0, 1)
+    rockSong.fade(1, 0, 1)
+    paperSong.fade(1, 0, 1)
     const choice = await wizard_backend.get_choice();
-
       if(choice == '0'){
         console.log("you lost")
         setOutcome("You Lost.")

@@ -68,6 +68,7 @@ function openModal() {
     else    
         x.style.display = "none"
 }
+
 function closeLanding() {
     var wallets = document.getElementById("connect-wallet-container")
     var page = document.getElementById("landing-page")

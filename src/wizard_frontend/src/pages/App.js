@@ -15,7 +15,6 @@ export default function App () {
     <div id="app-wrapper">
       <Landing/>
       <Game/>
-      <embed src="gamba_demo_song.mp3" loop={true}></embed>
     </div>
 
   )

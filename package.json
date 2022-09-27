@@ -42,6 +42,7 @@
   ],
   "dependencies": {
     "@web3-react/core": "^6.1.9",
+    "howler": "^2.2.3",
     "ic-stoic-identity": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

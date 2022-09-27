@@ -1,7 +1,18 @@
 import * as React from "react";
 import { Outlet, Link } from "react-router-dom";
+import {Howl, Howler} from 'howler';
 import { wizard_backend } from "../../../declarations/wizard_backend";
 import {topLeftClicked, topCenterClicked, topRightClicked, bottomLeftClicked, bottomCenterClicked, bottomRightClicked} from "../functions/priceOptions";
+
+var gameSong = new Howl ({
+  src: ['audio/2nd_game_page.wav'],
+  autoplay: true,
+  loop: true,
+  volume: 0,
+  onend: function() {
+      console.log('Finished!');
+    }
+})
 
 const Game = () => {
   const [name, setName] = React.useState('');
@@ -10,7 +21,8 @@ const Game = () => {
   const [houseChoice, setHouseChoice] = React.useState('')
 
   const [outcome, setOutcome] = React.useState(null)
- 
+
+
   function convertAmountID (id_string) {
     var amount = 0;
     switch(id_string){
@@ -173,3 +185,4 @@ const Game = () => {
 };
 
 export default Game;
+export var gameSong;

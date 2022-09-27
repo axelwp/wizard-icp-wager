@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Outlet, Link } from "react-router-dom";
 import {StoicIdentity} from "ic-stoic-identity";
+import {Howl, Howler} from 'howler';
+import { gameSong } from "./Game";
 
 const CHAIN_ID = "ryjl3-tyaaa-aaaaa-aaaba-cai"
 const URL = "http://localhost:8080/"
@@ -72,9 +74,10 @@ function closeLanding() {
     var game = document.getElementById("game-page")
 
     wallets.style.display = "none"
-    
     page.className = "fade-out-landing"
     setTimeout(function() {
+        gameSong.fade(0, 1, 500)
+        openingSong.fade(0.75, 0, 500)
         game.style.animation = "fadeIn 1s"
         page.style.display = "none"
         setTimeout(function() {
@@ -100,10 +103,33 @@ const WalletModal = () => {
     )
 }
 
-const Landing = () => {
+var openingSong = new Howl ({
+    src: ['audio/1st_game_page.wav'],
+    autoplay: true,
+    loop: true,
+    volume: 0.75,
+    onend: function() {
+        console.log('Finished!');
+      }
+})
 
+var muteClick = new Howl ({
+    src: ['audio/Button_2_short.wav'],
+    volume: 1,
+})
+
+function toggleMute () {
+    muteClick.play();
+    if(Howler.volume() == 0){
+        Howler.volume(1)
+    }else 
+        Howler.volume(0)
+}
+
+const Landing = () => {
     return (
     <div id="landing-page">
+        <div id ="toggle-music-button" onClick={toggleMute}/>
         <img src="WW-font.png" className="fade-in-logo-landing"></img>
         <WalletModal/>
         <div id="connect-wallet-button" onClick={openModal}>Connect</div>

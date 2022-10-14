@@ -199,26 +199,27 @@ const Game = () => {
       else 
         console.log("something went wrong", choice)
   }
-
+  //<div id="topLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.1</div>
+  //<div id="topCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.25</div>
   return (
     <div id="game-page">
+      <div id="game-animation-area"/>
         <div className="gameArea">
             <div className="wagerAmountArea">
                 <div className="topRow">
-                    <div id="topLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.1</div>
-                    <div id="topCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.25</div>
                     <div id="topRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.5</div>
-                </div>
-                <div className="bottomRow">
+
                     <div id="bottomLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>1</div>
                     <div id="bottomCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>2</div>
                     <div id="bottomRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>5</div>
                 </div>
                 </div>
             <div className="choiceArea">
+              <div id="choicebuttons">
                 <button type="submit" value="Rock" onClick={ rockClicked }>Rock</button>
                 <button type="submit" value="Paper" onClick={ paperClicked }>Paper</button>
                 <button type="submit" value="Scissors" onClick={ scissorsClicked }>Scissors</button>
+              </div>
             </div>
             <div className="outcomeArea"> {outcome} </div>
         </div>

@@ -203,7 +203,7 @@ const Game = () => {
   //<div id="topCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.25</div>
   return (
     <div id="game-page">
-      <div id="game-animation-area"/>
+
         <div className="gameArea">
             <div className="wagerAmountArea">
                 <div className="topRow">

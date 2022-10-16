@@ -94,6 +94,7 @@ button[type="submit"] {
     height: 3rem;
     margin: auto;
 }
+
 #landing-page{
     /* The image used */
     background-image: url(./landing-page-2.gif);
@@ -112,6 +113,20 @@ button[type="submit"] {
 }
 #game-page{
     display: none;
+    /* The image used */
+    background-image: url(./game-page-2.png);
+    /*preserves the crisp edges of the pixel art*/
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    
+    /* Full height */
+    height: 100vh;
+    position: relative;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 #game-animation-area{
     /* The image used */
@@ -184,6 +199,7 @@ button[type="submit"] {
     margin: auto;
     width: 100%;
     position: absolute;
+    bottom: 14%;
 }
 
 .choiceArea {

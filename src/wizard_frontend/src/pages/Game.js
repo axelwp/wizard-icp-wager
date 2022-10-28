@@ -2,7 +2,7 @@ import * as React from "react";
 import { Outlet, Link } from "react-router-dom";
 import {Howl, Howler} from 'howler';
 import { wizard_backend } from "../../../declarations/wizard_backend";
-import {topLeftClicked, topCenterClicked, topRightClicked, bottomLeftClicked, bottomCenterClicked, bottomRightClicked} from "../functions/priceOptions";
+import {topLeftClicked, topCenterClicked, topRightClicked, bottomLeftClicked, bottomCenterClicked, bottomRightClicked, wager2, wager3, wager4, wager1} from "../functions/priceOptions";
 
 var gameSong = new Howl ({
   src: ['audio/2nd_game_page.wav'],
@@ -57,22 +57,16 @@ const Game = () => {
   function convertAmountID (id_string) {
     var amount = 0;
     switch(id_string){
-      case 'topLeftOption': 
-        amount = 0.1;
-        break;
-      case 'topCenterOption': 
-        amount = 0.25;
-        break;
-      case 'topRightOption': 
+      case 'wager-1': 
         amount = 0.5;
         break;
-      case 'bottomLeftOption': 
+      case 'wager-2': 
         amount= 1;
         break;
-      case 'bottomCenterOption': 
+      case 'wager-3': 
         amount = 2;
         break;
-      case 'bottomRightOption': 
+      case 'wager-4': 
         amount = 5;
         break;
       default: 
@@ -90,43 +84,29 @@ const Game = () => {
 
   function amountClicked (id) {
     switch(id){
-      case 'topLeftOption': 
-        topLeftClicked()
-        if(selectedAmount != 0.1)
-          setSelectedAmount(0.1)
-        else
-          setSelectedAmount(null)
-        break;
-      case 'topCenterOption': 
-        topCenterClicked()
-        if(selectedAmount != 0.25)
-          setSelectedAmount(0.25)
-        else
-          setSelectedAmount(null)
-        break;
-      case 'topRightOption': 
-        topRightClicked()
+      case 'wager-1': 
+        wager1()
         if(selectedAmount != 0.5)
           setSelectedAmount(0.5)
         else
           setSelectedAmount(null)
         break;
-      case 'bottomLeftOption': 
-        bottomLeftClicked()
+      case 'wager-2': 
+        wager2()
         if(selectedAmount != 1)
           setSelectedAmount(1)
         else
           setSelectedAmount(null)
         break;
-      case 'bottomCenterOption': 
-        bottomCenterClicked()
+      case 'wager-3': 
+        wager3()
         if(selectedAmount != 2)
           setSelectedAmount(2)
         else
           setSelectedAmount(null)
         break;
-      case 'bottomRightOption': 
-        bottomRightClicked()
+      case 'wager-4':
+        wager4()
         if(selectedAmount != 5)
           setSelectedAmount(5)
         else
@@ -165,7 +145,6 @@ const Game = () => {
     rockSong.fade(1, 0, 1)
     scissorsSong.fade(1, 0, 1)
     const choice = await wizard_backend.get_choice();
-
       if(choice == '0'){
         console.log("You Won!")
         setOutcome("You Won!")
@@ -207,22 +186,22 @@ const Game = () => {
         <div className="gameArea">
             <div className="wagerAmountArea">
                 <div className="topRow">
-                    <div id="topRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.5</div>
-
-                    <div id="bottomLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>1</div>
-                    <div id="bottomCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>2</div>
-                    <div id="bottomRightOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>5</div>
+                    <div id="wager-1" className="deselected" onClick={ e => amountClicked(e.target.id) }/>
+                    <div id="wager-2" className="deselected" onClick={ e => amountClicked(e.target.id) }/>
+                    <div id="wager-3" className="deselected" onClick={ e => amountClicked(e.target.id) }/>
+                    <div id="wager-4" className="deselected" onClick={ e => amountClicked(e.target.id) }/>
                 </div>
                 </div>
             <div className="choiceArea">
               <div id="choicebuttons">
-                <button type="submit" value="Rock" onClick={ rockClicked }>Rock</button>
-                <button type="submit" value="Paper" onClick={ paperClicked }>Paper</button>
-                <button type="submit" value="Scissors" onClick={ scissorsClicked }>Scissors</button>
+                <button id="rock" type="submit" value="Rock" onClick={ rockClicked }/>
+                <button id="paper" type="submit" value="Paper" onClick={ paperClicked }/>
+                <button id="scissors" type="submit" value="Scissors" onClick={ scissorsClicked }/>
               </div>
             </div>
             <div className="outcomeArea"> {outcome} </div>
         </div>
+        <div id="game-panel"/>
     </div>
   );
 };

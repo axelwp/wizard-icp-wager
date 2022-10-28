@@ -29,12 +29,19 @@ form {
 
 button[type="submit"] {
     padding: 10px 20px;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    margin-left: 1.75vw;
+    margin-right: 1.75vw;
     width: 15.2vw;
-    height: 7vh;
+    height: 9vh;
     font-size: 35px;
-    opacity: 70%;
+    background-color: transparent;
+    border: none;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 #greeting {
@@ -114,7 +121,7 @@ button[type="submit"] {
 #game-page{
     display: none;
     /* The image used */
-    background-image: url(./game-page-2.png);
+    background-image: url(./V01/Buttons/Menu/Menu02.png);
     /*preserves the crisp edges of the pixel art*/
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;
@@ -148,6 +155,10 @@ button[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    bottom: -3vh;
+    left: 0;
+    right: 0;
 }
 #toggle-music-button{
     background-image: url(./mute.png);
@@ -162,27 +173,120 @@ button[type="submit"] {
     top: 10%;
     left: 5%;
 }
+/*background panel behind buttons*/
+#game-panel{
+     /* The image used */
+     background-image: url(./V01/Buttons/Menu/Menu01.png);
+     /*preserves the crisp edges of the pixel art*/
+     image-rendering: pixelated;
+     image-rendering: -moz-crisp-edges;
+     image-rendering: crisp-edges;
+     height: 100%;
+     width: 100%;
+     position: absolute;
+     bottom: 0vh;
+     left: 0;
+     right: 0;
+     margin-left: auto; 
+     margin-right: auto; 
+     z-index: 0;
+     /* Center and scale the image nicely */
+     background-position: center;
+     /*background-position-y: top;*/
+     background-repeat: no-repeat;
+     background-size: 100% 100%;
 
+}
+
+/*image for the first wager amount*/
+#wager-1{
+    margin-left: 3vw;
+    background-image: url(./V01/Buttons/Small/!pressed/01.png);
+
+}
+#wager-1.selected{
+    background-image: url(./V01/Buttons/Small/pressed/01.png);
+}
+
+/*image for the second wager amount*/
+#wager-2{
+    background-image: url(./V01/Buttons/Small/!pressed/02.png);
+}
+#wager-2.selected{
+    background-image: url(./V01/Buttons/Small/pressed/02.png);
+}
+
+/*image for the third wager amount*/
+#wager-3{
+    background-image: url(./V01/Buttons/Small/!pressed/03.png);
+}
+#wager-3.selected{
+    background-image: url(./V01/Buttons/Small/pressed/03.png);
+}
+
+/*image for the fourth wager amount*/
+#wager-4{
+    background-image: url(./V01/Buttons/Small/!pressed/04.png);
+}
+#wager-4.selected{
+    background-image: url(./V01/Buttons/Small/pressed/04.png);
+}
+
+/*image for rock button*/
+#rock{
+    margin-left: 3.3vw;
+    background-image: url(./V01/Buttons/Big/!pressed/01.png);
+}
+#rock:active{
+    background-image: url(./V01/Buttons/Big/pressed/01.png);
+}
+/*image for paper button*/
+#paper{
+    margin-left: 1.9;
+    background-image: url(./V01/Buttons/Big/!pressed/02.png);
+}
+#paper:active{
+    background-image: url(./V01/Buttons/Big/pressed/02.png);
+}
+/*image for scissors button*/
+#scissors{
+    background-image: url(./V01/Buttons/Big/!pressed/03.png);
+}
+#scissors:active{
+    background-image: url(./V01/Buttons/Big/pressed/03.png);
+}
 
 .deselected {
-    background-color: #fff7e6;
-    opacity: 70%;
-    height: 6vh;
-    width: 11vw;
+    height: 7vh;
+    width: 9vw;
     text-align: center;
     display: inline-block;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    margin-left: 2.1vw;
+    margin-right: 2.1vw;
+    margin-bottom: 1.9vh;
+
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 .selected {
-    background-color: #b37a00;
-    opacity: 70%;
-    height: 6vh;
-    width: 11vw;
+    height: 7vh;
+    width: 9vw;
     text-align: center;
     display: inline-block;
-    margin-left: 1vw;
-    margin-right: 1vw;
+    margin-left: 2.1vw;
+    margin-right: 2.1vw;
+    margin-bottom: 1.9vh;
+
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 .outcomeArea {
     margin-left: auto;
@@ -200,6 +304,7 @@ button[type="submit"] {
     width: 100%;
     position: absolute;
     bottom: 14%;
+    z-index: 1;
 }
 
 .choiceArea {
@@ -208,6 +313,7 @@ button[type="submit"] {
     width: 100%;
     bottom: 4%;
     margin: auto;
+    z-index: 1;
 }
 .gameArea {
     align-items: center;

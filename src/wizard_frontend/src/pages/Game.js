@@ -5,37 +5,7 @@ import { wizard_backend } from "../../../declarations/wizard_backend";
 import {topLeftClicked, topCenterClicked, topRightClicked, bottomLeftClicked, bottomCenterClicked, bottomRightClicked, wager2, wager3, wager4, wager1} from "../functions/priceOptions";
 
 var gameSong = new Howl ({
-  src: ['audio/2nd_game_page.wav'],
-  autoplay: true,
-  loop: true,
-  volume: 0,
-  onend: function() {
-      console.log('Finished!');
-    }
-})
-
-var scissorsSong = new Howl ({
-  src: ['audio/Chosing_Scissors.wav'],
-  autoplay: true,
-  loop: true,
-  volume: 0,
-  onend: function() {
-      console.log('Finished!');
-    }
-})
-
-var rockSong = new Howl ({
-  src: ['audio/Choosing_Rock.wav'],
-  autoplay: true,
-  loop: true,
-  volume: 0,
-  onend: function() {
-      console.log('Finished!');
-    }
-})
-
-var paperSong = new Howl ({
-  src: ['audio/Choosing_Paper.wav'],
+  src: ['audio/gamba_song_4.mp3'],
   autoplay: true,
   loop: true,
   volume: 0,
@@ -119,65 +89,81 @@ const Game = () => {
 
 
   async function rockClicked() {
-    rockSong.fade(0, 1, 1)
-    scissorsSong.fade(1, 0, 1)
-    paperSong.fade(1, 0, 1)
-    gameSong.fade(1, 0, 1)
-    const choice = await wizard_backend.get_choice();
-
-      if(choice == '0'){
-        console.log("you Tied")
-        setOutcome("You Tied...")
-      } else if(choice == '1'){
-        console.log("You Lost.")
-        setOutcome("You Lost.")
-      } else if (choice == '2'){
-        console.log("You Won!")
-        setOutcome("You Won!")
+    if(selectedAmount){
+      document.getElementById("rock").classList.add("chosen");
+      document.getElementById("paper").classList.remove("chosen");
+      document.getElementById("scissors").classList.remove("chosen");
+      const choice = await wizard_backend.get_choice();
+      console.log("got response");
+      switch (choice){
+        case '0':
+          setOutcome(-1);
+          break;
+        case '1':
+          setOutcome(0);
+          break;
+        case '2':
+          setOutcome(1);
+          break;
+        default:
+          console.log("something went wrong", choice)
       }
-      else 
-        console.log("something went wrong", choice)
+    }
   }
 
   async function paperClicked() {
-    paperSong.fade(0, 1, 1)
-    gameSong.fade(1, 0, 1)
-    rockSong.fade(1, 0, 1)
-    scissorsSong.fade(1, 0, 1)
-    const choice = await wizard_backend.get_choice();
-      if(choice == '0'){
-        console.log("You Won!")
-        setOutcome("You Won!")
-      } else if(choice == '1'){
-        console.log("You Tied...")
-        setOutcome("You Tied...")
-      } else if (choice == '2'){
-        console.log("You Lost.")
-        setOutcome("You Lost.")
+    if(selectedAmount){
+      document.getElementById("paper").classList.add("chosen");
+      document.getElementById("rock").classList.remove("chosen");
+      document.getElementById("scissors").classList.remove("chosen");
+      const choice = await wizard_backend.get_choice();
+      console.log("got response");
+      switch (choice){
+        case '0':
+          setOutcome(1);
+          break;
+        case '1':
+          setOutcome(-1);
+          break;
+        case '2':
+          setOutcome(0);
+          break;
+        default:
+          console.log("something went wrong", choice)
       }
-      else 
-        console.log("something went wrong", choice)
+    }
   }
 
   async function scissorsClicked() {
-    scissorsSong.fade(0, 1, 1)
-    gameSong.fade(1, 0, 1)
-    rockSong.fade(1, 0, 1)
-    paperSong.fade(1, 0, 1)
-    const choice = await wizard_backend.get_choice();
-      if(choice == '0'){
-        console.log("you lost")
-        setOutcome("You Lost.")
-      } else if(choice == '1'){
-        console.log("You won!")
-        setOutcome("You Won!")
-      } else if (choice == '2'){
-        console.log("You Tied...")
-        setOutcome("You Tied...")
+    if(selectedAmount){
+      document.getElementById("scissors").classList.add("chosen");
+      document.getElementById("paper").classList.remove("chosen");
+      document.getElementById("rock").classList.remove("chosen");
+
+      const choice = await wizard_backend.get_choice();
+      console.log("got response");
+      switch (choice){
+        case '0':
+          setOutcome(0);
+          break;
+        case '1':
+          setOutcome(1);
+          break;
+        case '2':
+          setOutcome(-1);
+          break;
+        default:
+          console.log("something went wrong", choice)
       }
-      else 
-        console.log("something went wrong", choice)
+    }
   }
+  function toggleMute () {
+    if(Howler.volume() == 0){
+        Howler.volume(1)
+    }else 
+        Howler.volume(0)
+    
+}
   //<div id="topLeftOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.1</div>
   //<div id="topCenterOption" className="deselected" onClick={ e => amountClicked(e.target.id) }>0.25</div>
   return (
@@ -194,14 +180,15 @@ const Game = () => {
                 </div>
             <div className="choiceArea">
               <div id="choicebuttons">
-                <button id="rock" type="submit" value="Rock" onClick={ rockClicked }/>
-                <button id="paper" type="submit" value="Paper" onClick={ paperClicked }/>
-                <button id="scissors" type="submit" value="Scissors" onClick={ scissorsClicked }/>
+                <div id="rock" value="Rock" onClick={ rockClicked }/>
+                <div id="paper" value="Paper" onClick={ paperClicked }/>
+                <div id="scissors" value="Scissors" onClick={ scissorsClicked }/>
               </div>
             </div>
             <div className="outcomeArea"> {outcome} </div>
         </div>
         <div id="game-panel"/>
+        <div id ="toggle-music-button" onClick={toggleMute}/>
     </div>
   );
 };

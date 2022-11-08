@@ -32,8 +32,8 @@ async function connectStoic () {
             console.log(`The connected user's public key is: `, identity.getPrincipal().toText());
             closeLanding()
 
-            //Create an actor canister -- not sure what this does or how to make it work
-            const actor = Actor.createActor(idlFactory, {
+            //Create an actor canister
+            const actor = actor.createActor(idlFactory, {
               agent: new HttpAgent({
                 identity,
               }),
@@ -77,8 +77,8 @@ function closeLanding() {
     wallets.style.display = "none"
     page.className = "fade-out-landing"
     setTimeout(function() {
-        gameSong.fade(0, 1, 500)
-        openingSong.fade(0.75, 0, 500)
+        gameSong.fade(0, 1, 2000)
+        openingSong.fade(0.75, 0, 2000)
         game.style.animation = "fadeIn 1s"
         page.style.display = "none"
         setTimeout(function() {
@@ -105,7 +105,7 @@ const WalletModal = () => {
 }
 
 var openingSong = new Howl ({
-    src: ['audio/1st_game_page.wav'],
+    src: ['audio/wizards_wager_new_orchestral.mp3'],
     autoplay: true,
     loop: true,
     volume: 0.75,
@@ -120,11 +120,11 @@ var muteClick = new Howl ({
 })
 
 function toggleMute () {
-    muteClick.play();
     if(Howler.volume() == 0){
         Howler.volume(1)
     }else 
         Howler.volume(0)
+    
 }
 
 const Landing = () => {

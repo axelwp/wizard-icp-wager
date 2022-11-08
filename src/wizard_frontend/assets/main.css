@@ -160,6 +160,22 @@ button[type="submit"] {
     left: 0;
     right: 0;
 }
+#choicebuttons div {
+    padding: 10px 20px;
+    margin-left: 1.75vw;
+    margin-right: 1.75vw;
+    width: 15.2vw;
+    height: 9vh;
+    font-size: 35px;
+    background-color: transparent;
+    border: none;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
 #toggle-music-button{
     background-image: url(./mute.png);
     background-position: center;
@@ -237,7 +253,7 @@ button[type="submit"] {
     margin-left: 3.3vw;
     background-image: url(./V01/Buttons/Big/!pressed/01.png);
 }
-#rock:active{
+#rock.chosen{
     background-image: url(./V01/Buttons/Big/pressed/01.png);
 }
 /*image for paper button*/
@@ -245,14 +261,14 @@ button[type="submit"] {
     margin-left: 1.9;
     background-image: url(./V01/Buttons/Big/!pressed/02.png);
 }
-#paper:active{
+#paper.chosen{
     background-image: url(./V01/Buttons/Big/pressed/02.png);
 }
 /*image for scissors button*/
 #scissors{
     background-image: url(./V01/Buttons/Big/!pressed/03.png);
 }
-#scissors:active{
+#scissors.chosen{
     background-image: url(./V01/Buttons/Big/pressed/03.png);
 }
 

@@ -163,9 +163,9 @@ button[type="submit"] {
 #choicebuttons div {
     padding: 10px 20px;
     margin-left: 1.75vw;
-    margin-right: 1.75vw;
-    width: 15.2vw;
-    height: 9vh;
+    margin-right: 0.35vw;
+    width: 14.5vw;
+    height: 8vh;
     font-size: 35px;
     background-color: transparent;
     border: none;
@@ -250,7 +250,7 @@ button[type="submit"] {
 
 /*image for rock button*/
 #rock{
-    margin-left: 3.3vw;
+    margin-right: 8vw;
     background-image: url(./V01/Buttons/Big/!pressed/01.png);
 }
 #rock.chosen{

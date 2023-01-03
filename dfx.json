@@ -1,16 +1,13 @@
 {
   "canisters": {
-    "ledger_transfer": {
-      "dependencies": [
-        "ledger"
-      ],
-      "main": "src/ledger_transfer/main.mo",
-      "type": "motoko"
-    },
     "ledger": {
       "type": "custom",
-      "candid": "ledger.public.did",
-      "wasm": "ledger.wasm"
+      "wasm": "ledger.wasm",
+      "candid": "ledger.private.did"
+    },
+    "wizard_backend": {
+      "main": "src/wizard_backend/main.mo",
+      "type": "motoko"
     },
     "wizard_frontend": {
       "dependencies": [
@@ -26,15 +23,7 @@
       "type": "assets"
     }
   },
-  "defaults": {
-    "replica": {
-      "subnet_type":"system"
-    },
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
+  
   "dfx": "0.12.0",
   "version": 1
 }

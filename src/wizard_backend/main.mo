@@ -1,5 +1,4 @@
 import Ledger    "canister:ledger";
-
 import Debug     "mo:base/Debug";
 import Error     "mo:base/Error";
 import Random "mo:base/Random";
@@ -11,6 +10,17 @@ import Nat64     "mo:base/Nat64";
 import Principal "mo:base/Principal";
 import Time      "mo:base/Time";
 import Account   "./Account";
+
+/*
+  To deploy the ledger canister locally run the following in root after dfx start:
+    dfx identity new minter
+    dfx identity use minter
+    export MINT_ACC=$(dfx ledger account-id)
+    dfx identity use default
+    export LEDGER_ACC=$(dfx ledger account-id)
+    dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}})'
+*/
+
 
 actor Self {
   let SubnetManager : actor {

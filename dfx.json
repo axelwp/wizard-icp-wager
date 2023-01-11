@@ -3,10 +3,16 @@
     "ledger": {
       "type": "custom",
       "wasm": "ledger.wasm",
-      "candid": "ledger.private.did"
+      "candid": "ledger.public.did",
+      "remote": {
+        "candid": "ledger.public.did",
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      }
     },
     "wizard_backend": {
-      "main": "src/wizard_backend/main.mo",
+      "main": "src/wizard_backend/Backend.mo",
       "type": "motoko"
     },
     "wizard_frontend": {
@@ -23,7 +29,11 @@
       "type": "assets"
     }
   },
-  
+  "defaults":{
+    "replica": {
+      "subnet_type":"system"
+    }
+  },
   "dfx": "0.12.0",
   "version": 1
 }

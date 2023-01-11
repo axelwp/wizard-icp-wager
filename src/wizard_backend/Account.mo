@@ -1,5 +1,8 @@
 import Array     "mo:base/Array";
+import Buffer     "mo:base/Buffer";
+import Iter     "mo:base/Iter";
 import Blob      "mo:base/Blob";
+import Nat      "mo:base/Nat";
 import Nat8      "mo:base/Nat8";
 import Nat32     "mo:base/Nat32";
 import Principal "mo:base/Principal";
@@ -30,8 +33,28 @@ module {
     hash.write(Blob.toArray(Text.encodeUtf8("account-id")));
     hash.write(Blob.toArray(Principal.toBlob(principal)));
     hash.write(Blob.toArray(subaccount));
+    
     let hashSum = hash.sum();
     let crc32Bytes = beBytes(CRC32.ofArray(hashSum));
+    /*
+    let buffer = Buffer.Buffer<Nat>(3);
+    //beBytes returns a [Nat8] with a length of 4
+    for (i in Iter.range(0, 3)){
+      buffer.add(Nat8.toNat(crc32Bytes[i]));
+    };
+    //Sha 224 hash is 224 bits long and Nat8 is 8 bits so we iterate 28 times
+    for (i in Iter.range(0, 27)){
+      buffer.add(Nat8.toNat(hashSum[i]));
+    };
+    var accountID = Array.init<Nat8>(buffer.size(), 0);
+    //loop through the buffer and copy the elements into a Nat8 array
+    for (i in Iter.range(0, buffer.size() - 1)){
+      accountID[i] := Nat8.fromNat(buffer.get(i));
+    };
+    Blob.fromArrayMut(accountID)
+    
+    //Array.append was deprecated, replaced with Buffer.append above
+    */
     Blob.fromArray(Array.append(crc32Bytes, hashSum))
   };
 

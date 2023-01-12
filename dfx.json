@@ -1,5 +1,9 @@
 {
   "canisters": {
+    "wizard_backend": {
+      "main": "src/wizard_backend/main.mo",
+      "type": "motoko"
+    },
     "ledger": {
       "type": "custom",
       "wasm": "ledger.wasm",
@@ -10,10 +14,6 @@
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
         }
       }
-    },
-    "wizard_backend": {
-      "main": "src/wizard_backend/Backend.mo",
-      "type": "motoko"
     },
     "wizard_frontend": {
       "dependencies": [

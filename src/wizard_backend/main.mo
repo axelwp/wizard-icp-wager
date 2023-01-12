@@ -1,35 +1,43 @@
-import Ledger    "canister:ledger";
-import Debug     "mo:base/Debug";
-import Error     "mo:base/Error";
-import Random "mo:base/Random";
-import Float "mo:base/Float";
-import Int "mo:base/Int";
-import HashMap   "mo:base/HashMap";
-import List      "mo:base/List";
-import Nat64     "mo:base/Nat64";
-import Principal "mo:base/Principal";
-import Time      "mo:base/Time";
-import Account   "./Account";
-
-/*
-  To deploy the ledger canister locally run the following in root after dfx start:
-    dfx identity new minter
-    dfx identity use minter
-    export MINT_ACC=$(dfx ledger account-id)
-    dfx identity use default
-    export LEDGER_ACC=$(dfx ledger account-id)
-    dfx deploy ledger --argument '(record {minting_account = "'${MINT_ACC}'"; initial_values = vec { record { "'${LEDGER_ACC}'"; record { e8s=100_000_000_000 } }; }; send_whitelist = vec {}})'
-*/
-
+import Ledger     "canister:ledger";
+import Random     "mo:base/Random";
+import Float      "mo:base/Float";
+import Int        "mo:base/Int";
+import Debug      "mo:base/Debug";
+import Error      "mo:base/Error";
+import HashMap    "mo:base/HashMap";
+import List       "mo:base/List";
+import Nat64      "mo:base/Nat64";
+import Principal  "mo:base/Principal";
+import Time       "mo:base/Time";
+import Account    "../ledger/Account";
 
 actor Self {
-  
-  public type Post = {
-    text : Text;
-    created_at : Int;
+  let SubnetManager : actor {
+      raw_rand() : async Blob;
+  } = actor "aaaaa-aa";
+    
+  public func get_bytes() : async Blob {
+      let bytes = await SubnetManager.raw_rand();
+      return bytes;
   };
-  public type Posts = List.List<Post>;
+    
+public func get_choice() : async Text {
+      //let someBlob = await get_bytes();
+      //let random = Random.rangeFrom(32, someBlob);
+      // between 0..4294967295
+      let bytes : Blob = await SubnetManager.raw_rand();
 
+      let random = Random.rangeFrom(3, bytes);
+      let newRandom = random / 3;
+      return Int.toText(newRandom);
+};
+
+  public type Post = {
+      text : Text;
+      created_at : Int;
+  };
+
+  public type Posts = List.List<Post>;
   // Posts indexed by the author.
   // Newest posts are at the front of the post list.
   var posts : HashMap.HashMap<Principal, Posts> = HashMap.HashMap(10, Principal.equal, Principal.hash);

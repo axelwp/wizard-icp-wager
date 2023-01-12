@@ -22,7 +22,7 @@ type ArchiveOptions = record {
 };
 
 // Height of a ledger block.
-type BlockIndex = nat64;
+type BlockHeight = nat64;
 
 // A number associated with a transaction.
 // Can be set by the caller in `send` call as a correlation identifier.
@@ -53,7 +53,7 @@ type Transfer = variant {
 type Transaction = record {
     transfer: Transfer;
     memo: Memo;
-    created_at: BlockIndex;
+    created_at: BlockHeight;
 };
 
 // Arguments for the `send_dfx` call.
@@ -69,7 +69,7 @@ type SendArgs = record {
 // Arguments for the `notify` call.
 type NotifyCanisterArgs = record {
     // The of the block to send a notification about.
-    block_height: BlockIndex;
+    block_height: BlockHeight;
     // Max fee, should be 10000 e8s.
     max_fee: Tokens;
     // Subaccount the payment came from.
@@ -97,7 +97,7 @@ type LedgerCanisterInitPayload = record {
 };
 
 service: (LedgerCanisterInitPayload) -> {
-  send_dfx : (SendArgs) -> (BlockIndex);
+  send_dfx : (SendArgs) -> (BlockHeight);
   notify_dfx: (NotifyCanisterArgs) -> ();
   account_balance_dfx : (AccountBalanceArgs) -> (Tokens) query;
 }
